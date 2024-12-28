@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react';
-import './Navbar.jsx';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './navbar.css';
 
 const Navbar = () => {
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      navbar.classList.toggle('sticky', window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <nav className="navbar">
       <div className="logo">
@@ -22,14 +13,37 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navigation">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#blog">Blog</a>
-        <a href="#about">About</a>
-        <a href="#shop">Shop</a>
-        <a href="#contact">
-          <i className="fa-solid fa-cart-shopping"></i>
-        </a>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+          end
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/menu"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          Menu
+        </NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          Blog
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          About
+        </NavLink>
+        <NavLink
+          to="/shop"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          Shop
+        </NavLink>
       </div>
     </nav>
   );
